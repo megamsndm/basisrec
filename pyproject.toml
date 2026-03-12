@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "basisrec"
+version = "1.0.0"
+description = "Automatic per-atom basis set recommendation with full ORCA input generation"
+readme = "README.md"
+authors = [{ name = "BasisRec Authors" }]
+requires-python = ">=3.9"
+keywords = ["quantum chemistry", "basis set", "ORCA", "computational chemistry", "machine learning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "basis-set-exchange>=0.9",
+    "numpy>=1.23",
+    "rdkit>=2022.09",
+    "torch>=2.0",
+    "torch-geometric>=2.3",
+    "rich>=13.0",
+    "click>=8.1",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "pytest-mock>=3.11",
+    "black>=23.0",
+    "ruff>=0.1",
+    "mypy>=1.5",
+]
+pyscf = ["pyscf>=2.3"]
+
+[project.scripts]
+basisrec = "basisrec.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/basisrec"
+Issues = "https://github.com/yourusername/basisrec/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["basisrec*"]
+
+[tool.setuptools.package-data]
+basisrec = ["data/example_molecules/*.xyz"]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["basisrec/tests"]
+addopts = "-v"
+markers = [
+    "slow: marks tests as slow (deselect with '-m not slow')",
+    "integration: marks end-to-end integration tests",
+]
+
+[tool.coverage.run]
+source = ["basisrec"]
+omit = ["basisrec/tests/*", "basisrec/__main__.py"]
