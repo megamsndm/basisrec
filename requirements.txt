@@ -1,0 +1,8 @@
+basis-set-exchange>=0.9
+numpy>=1.23
+rdkit>=2022.09
+torch>=2.0
+torch-geometric>=2.3
+rich>=13.0
+click>=8.1
+pydantic>=2.0
