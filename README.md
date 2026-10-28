@@ -174,9 +174,3 @@ pytest
 # With coverage
 pytest --cov=basisrec --cov-report=html
 ```
-
----
-
-## License
-
-All rights reserved.
