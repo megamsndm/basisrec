@@ -7,7 +7,7 @@ name = "basisrec"
 version = "1.0.0"
 description = "Automatic per-atom basis set recommendation with full ORCA input generation"
 readme = "README.md"
-authors = [{ name = "BasisRec Authors" }]
+authors = [{ name = "Mohsen Doust Mohammadi" }]
 requires-python = ">=3.9"
 keywords = ["quantum chemistry", "basis set", "ORCA", "computational chemistry", "machine learning"]
 classifiers = [
